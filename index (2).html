@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nico & Monse | Creative Visuals</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary: #1a1a1a;
+            --secondary: #f5f5f5;
+            --accent: #ff6b6b;
+            --text: #333;
+            
+            /* Nico's colors - Sky/Tech/Aerial */
+            --nico-1: #00d4ff;
+            --nico-2: #0066ff;
+            --nico-3: #6366f1;
+            --nico-4: #1e40af;
+            
+            /* Monse's colors - Warm/Artistic/Creative */
+            --monse-1: #ff6b9d;
+            --monse-2: #ff8c42;
+            --monse-3: #ffd93d;
+            --monse-4: #c724b1;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background: var(--primary);
+            color: var(--text);
+            overflow-x: hidden;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            width: 100vw;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            padding: 1.5rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        nav::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                rgba(0, 212, 255, 0.1) 25%, 
+                rgba(255, 107, 157, 0.1) 50%, 
+                rgba(0, 212, 255, 0.1) 75%, 
+                transparent 100%);
+            animation: shimmer 8s linear infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Home page wrapper */
+        #home-page {
+            width: 100vw;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, 
+                var(--nico-1) 0%, 
+                var(--nico-2) 25%, 
+                var(--monse-4) 50%, 
+                var(--monse-2) 75%, 
+                var(--monse-3) 100%);
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin-bottom: 2rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--nico-2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            background: var(--monse-3);
+            color: var(--primary);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--nico-2);
+        }
+
+        /* Floating elements */
+        .float-element {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 20s infinite;
+        }
+
+        .float-element:nth-child(1) {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .float-element:nth-child(2) {
+            top: 60%;
+            right: 10%;
+            animation-delay: 3s;
+            width: 150px;
+            height: 150px;
+        }
+
+        .float-element:nth-child(3) {
+            bottom: 20%;
+            left: 50%;
+            animation-delay: 6s;
+            width: 80px;
+            height: 80px;
+        }
+
+        /* About Section */
+        .about {
+            padding: 8rem 5%;
+            background: linear-gradient(180deg, 
+                #ffffff 0%, 
+                #f8f9fa 30%, 
+                #f1f3f5 70%, 
+                #ffffff 100%);
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            margin: 0;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.15) 0%, transparent 70%);
+            top: -250px;
+            right: -250px;
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        .about::after {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.15) 0%, transparent 70%);
+            bottom: -200px;
+            left: -200px;
+            animation: pulse 8s ease-in-out infinite;
+            animation-delay: 4s;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 0.4;
+            }
+            50% {
+                transform: scale(1.3) rotate(180deg);
+                opacity: 0.7;
+            }
+        }
+
+        /* Additional floating accents for about section */
+        .about-accent-1,
+        .about-accent-2,
+        .about-accent-3 {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.2;
+            animation: floatAccent 25s ease-in-out infinite;
+        }
+
+        .about-accent-1 {
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, var(--nico-1) 0%, transparent 70%);
+            top: 30%;
+            left: 15%;
+            animation-delay: 0s;
+        }
+
+        .about-accent-2 {
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle, var(--monse-2) 0%, transparent 70%);
+            top: 60%;
+            right: 20%;
+            animation-delay: 8s;
+        }
+
+        .about-accent-3 {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, var(--nico-3) 0%, transparent 70%);
+            bottom: 25%;
+            left: 50%;
+            animation-delay: 16s;
+        }
+
+        @keyframes floatAccent {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(30px, -40px) scale(1.1);
+            }
+            66% {
+                transform: translate(-20px, 30px) scale(0.9);
+            }
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .about-card {
+            padding: 3rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .about-card.nico {
+            background: linear-gradient(135deg, 
+                var(--nico-1) 0%, 
+                var(--nico-2) 40%, 
+                var(--nico-3) 70%, 
+                var(--nico-4) 100%);
+            color: white;
+            box-shadow: 0 10px 40px rgba(0, 102, 255, 0.3);
+        }
+
+        .about-card.monse {
+            background: linear-gradient(135deg, 
+                var(--monse-1) 0%, 
+                var(--monse-4) 30%, 
+                var(--monse-2) 70%, 
+                var(--monse-3) 100%);
+            color: white;
+            box-shadow: 0 10px 40px rgba(255, 107, 157, 0.3);
+        }
+
+        .about-card h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .about-card p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .specialty {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.9;
+        }
+
+        /* Gallery Preview */
+        .gallery-preview {
+            padding: 8rem 5%;
+            background: linear-gradient(135deg, 
+                var(--primary) 0%, 
+                #2d3748 50%, 
+                var(--primary) 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            margin: 0;
+        }
+
+        .gallery-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0, 212, 255, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 107, 157, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% {
+                opacity: 0.3;
+            }
+            50% {
+                opacity: 0.6;
+            }
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3rem;
+            margin-bottom: 4rem;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1;
+            border-radius: 15px;
+            background: linear-gradient(135deg, var(--nico-2) 0%, var(--nico-3) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.3);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        }
+
+        .gallery-item:nth-child(1) {
+            background: linear-gradient(135deg, var(--nico-1) 0%, var(--nico-2) 50%, var(--nico-3) 100%);
+        }
+
+        .gallery-item:nth-child(2) {
+            background: linear-gradient(135deg, var(--monse-1) 0%, var(--monse-4) 50%, var(--monse-2) 100%);
+        }
+
+        .gallery-item:nth-child(3) {
+            background: linear-gradient(135deg, var(--nico-2) 0%, var(--monse-4) 50%, var(--nico-3) 100%);
+        }
+
+        .gallery-item:nth-child(4) {
+            background: linear-gradient(135deg, var(--monse-2) 0%, var(--monse-3) 50%, var(--monse-1) 100%);
+        }
+
+        .gallery-label {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 8rem 5%;
+            background: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            margin: 0;
+        }
+
+        .contact::before,
+        .contact::after {
+            content: '';
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.2) 0%, transparent 70%);
+            animation: floatBubble 20s ease-in-out infinite;
+        }
+
+        .contact::before {
+            width: 300px;
+            height: 300px;
+            bottom: -150px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .contact::after {
+            width: 200px;
+            height: 200px;
+            bottom: -100px;
+            right: 15%;
+            background: radial-gradient(circle, rgba(255, 107, 157, 0.2) 0%, transparent 70%);
+            animation-delay: 5s;
+        }
+
+        @keyframes floatBubble {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+            }
+            50% {
+                transform: translateY(-100px) scale(1.1);
+            }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+            background: var(--accent);
+        }
+
+        /* Portfolio Pages */
+        .portfolio-page {
+            display: none;
+            padding-top: 100px;
+            min-height: 100vh;
+            background: linear-gradient(180deg, 
+                rgba(26, 26, 26, 0.95) 0%, 
+                rgba(45, 55, 72, 0.95) 50%, 
+                rgba(26, 26, 26, 0.95) 100%);
+            width: 100vw;
+            margin: 0;
+        }
+
+        .portfolio-page.active {
+            display: block;
+        }
+
+        .portfolio-header {
+            text-align: center;
+            padding: 4rem 5%;
+            background: linear-gradient(135deg, 
+                var(--nico-1) 0%, 
+                var(--nico-2) 33%, 
+                var(--nico-3) 66%, 
+                var(--nico-4) 100%);
+            color: white;
+            box-shadow: 0 4px 30px rgba(0, 102, 255, 0.3);
+            width: 100vw;
+            margin: 0;
+        }
+
+        .portfolio-header.monse {
+            background: linear-gradient(135deg, 
+                var(--monse-1) 0%, 
+                var(--monse-4) 33%, 
+                var(--monse-2) 66%, 
+                var(--monse-3) 100%);
+            box-shadow: 0 4px 30px rgba(255, 107, 157, 0.3);
+        }
+
+        .portfolio-header h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .portfolio-content {
+            padding: 4rem 5%;
+            background: linear-gradient(180deg, 
+                rgba(26, 26, 26, 0.95) 0%, 
+                rgba(45, 55, 72, 0.95) 50%, 
+                rgba(26, 26, 26, 0.95) 100%);
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+            width: 100vw;
+            margin: 0;
+        }
+
+        .portfolio-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 90% 40%, rgba(99, 102, 241, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 30% 80%, rgba(0, 102, 255, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 70% 60%, rgba(30, 64, 175, 0.1) 0%, transparent 30%);
+            animation: particleFloat 20s ease-in-out infinite;
+        }
+
+        #monse-page .portfolio-content::before {
+            background-image: 
+                radial-gradient(circle at 15% 30%, rgba(255, 107, 157, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 85% 50%, rgba(199, 36, 177, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 40% 70%, rgba(255, 140, 66, 0.1) 0%, transparent 30%),
+                radial-gradient(circle at 60% 20%, rgba(255, 217, 61, 0.1) 0%, transparent 30%);
+        }
+
+        @keyframes particleFloat {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translateY(-30px) scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .work-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .work-item {
+            border-radius: 20px;
+            background: linear-gradient(135deg, var(--nico-2) 0%, var(--nico-3) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+        }
+
+        /* Video items - wider, landscape */
+        .work-item.video {
+            aspect-ratio: 16/9;
+            width: 100%;
+        }
+
+        /* Photo items - staggered left/right with portrait orientation */
+        .work-item.photo {
+            aspect-ratio: 3/4;
+            width: 70%;
+        }
+
+        .work-item.photo:nth-child(odd) {
+            align-self: flex-start;
+            margin-left: 0;
+        }
+
+        .work-item.photo:nth-child(even) {
+            align-self: flex-end;
+            margin-right: 0;
+        }
+
+        /* Square items for variety */
+        .work-item.square {
+            aspect-ratio: 1;
+            width: 60%;
+            align-self: center;
+        }
+
+        .work-item:hover {
+            transform: scale(1.02) translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        /* Placeholder for media */
+        .work-item img,
+        .work-item video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .work-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .work-item:hover .overlay {
+            transform: translateY(0);
+        }
+
+        /* Varied gradients for work items */
+        .work-item:nth-child(1) {
+            background: linear-gradient(135deg, var(--nico-1) 0%, var(--nico-2) 100%);
+        }
+        
+        .work-item:nth-child(2) {
+            background: linear-gradient(135deg, var(--nico-2) 0%, var(--nico-3) 100%);
+        }
+        
+        .work-item:nth-child(3) {
+            background: linear-gradient(135deg, var(--nico-3) 0%, var(--nico-4) 100%);
+        }
+        
+        .work-item:nth-child(4) {
+            background: linear-gradient(135deg, var(--nico-1) 0%, var(--nico-3) 100%);
+        }
+        
+        .work-item:nth-child(5) {
+            background: linear-gradient(135deg, var(--nico-2) 0%, var(--nico-4) 100%);
+        }
+        
+        .work-item:nth-child(6) {
+            background: linear-gradient(135deg, var(--nico-1) 0%, var(--nico-4) 100%);
+        }
+        
+        /* Monse's page gets different colors via CSS cascade */
+        #monse-page .work-item:nth-child(1) {
+            background: linear-gradient(135deg, var(--monse-1) 0%, var(--monse-2) 100%);
+        }
+        
+        #monse-page .work-item:nth-child(2) {
+            background: linear-gradient(135deg, var(--monse-4) 0%, var(--monse-1) 100%);
+        }
+        
+        #monse-page .work-item:nth-child(3) {
+            background: linear-gradient(135deg, var(--monse-2) 0%, var(--monse-3) 100%);
+        }
+        
+        #monse-page .work-item:nth-child(4) {
+            background: linear-gradient(135deg, var(--monse-1) 0%, var(--monse-4) 100%);
+        }
+        
+        #monse-page .work-item:nth-child(5) {
+            background: linear-gradient(135deg, var(--monse-2) 0%, var(--monse-1) 100%);
+        }
+        
+        #monse-page .work-item:nth-child(6) {
+            background: linear-gradient(135deg, var(--monse-3) 0%, var(--monse-4) 100%);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-50px) rotate(180deg);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-links {
+                gap: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .work-item.photo,
+            .work-item.square {
+                width: 100% !important;
+                align-self: center !important;
+            }
+
+            .work-item.video {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Nico <span>&</span> Monse</div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showPage('home')">Home</a></li>
+            <li><a href="#" onclick="showPage('nico')">Nico's Work</a></li>
+            <li><a href="#" onclick="showPage('monse')">Monse's Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Home Page -->
+    <div id="home-page">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="float-element"></div>
+            <div class="float-element"></div>
+            <div class="float-element"></div>
+            <div class="hero-content">
+                <h1>Creative Visuals</h1>
+                <p>Capturing moments from the sky and through the lens</p>
+                <div class="cta-buttons">
+                    <a href="#" onclick="showPage('nico')" class="btn btn-primary">View Drone & Video</a>
+                    <a href="#" onclick="showPage('monse')" class="btn btn-secondary">View Photography</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about">
+            <div class="about-accent-1"></div>
+            <div class="about-accent-2"></div>
+            <div class="about-accent-3"></div>
+            <div class="about-grid">
+                <div class="about-card nico" onclick="showPage('nico')">
+                    <div class="specialty">Drone & Video</div>
+                    <h3>Nico</h3>
+                    <p>Aerial perspectives and cinematic storytelling. Capturing the world from above with cutting-edge drone technology and creative video production.</p>
+                    <a href="#" onclick="showPage('nico'); return false;" class="btn btn-secondary">View Work →</a>
+                </div>
+                <div class="about-card monse" onclick="showPage('monse')">
+                    <div class="specialty">Photography</div>
+                    <h3>Monse</h3>
+                    <p>Artistic vision through the lens. Creating stunning imagery that tells stories and captures emotions in every frame.</p>
+                    <a href="#" onclick="showPage('monse'); return false;" class="btn btn-secondary">View Work →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Preview -->
+        <section class="gallery-preview">
+            <h2 class="section-title">Recent Work</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <div class="gallery-label">Aerial Views</div>
+                    🚁
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-label">Portraits</div>
+                    📸
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-label">Cinematic</div>
+                    🎬
+                </div>
+                <div class="gallery-item">
+                    <div class="gallery-label">Landscapes</div>
+                    🌄
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact" id="contact">
+            <h2 class="section-title" style="color: var(--primary)">Let's Create Together</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem;">Ready to bring your vision to life? Get in touch!</p>
+            <div class="social-links">
+                <a href="#" class="social-link" title="Instagram">📷</a>
+                <a href="#" class="social-link" title="Email">✉️</a>
+                <a href="#" class="social-link" title="YouTube">▶️</a>
+                <a href="#" class="social-link" title="LinkedIn">💼</a>
+            </div>
+        </section>
+    </div>
+
+    <!-- Nico's Portfolio Page -->
+    <div id="nico-page" class="portfolio-page">
+        <div class="portfolio-header">
+            <h2>Nico's Portfolio</h2>
+            <p>Drone & Video Work</p>
+        </div>
+        <div class="portfolio-content">
+            <div class="work-grid">
+                <div class="work-item video">
+                    <span>Aerial Cinematography Reel</span>
+                    <div class="overlay">
+                        <h3>Aerial Cinematography</h3>
+                        <p>Cinematic drone footage</p>
+                    </div>
+                </div>
+                <div class="work-item photo">
+                    <span>📸 Drone Photography</span>
+                    <div class="overlay">
+                        <h3>Aerial Perspectives</h3>
+                    </div>
+                </div>
+                <div class="work-item photo">
+                    <span>📸 Landscape Shot</span>
+                    <div class="overlay">
+                        <h3>Mountain Views</h3>
+                    </div>
+                </div>
+                <div class="work-item video">
+                    <span>Commercial Project</span>
+                    <div class="overlay">
+                        <h3>Real Estate Tour</h3>
+                        <p>4K drone tour</p>
+                    </div>
+                </div>
+                <div class="work-item square">
+                    <span>📸 City Aerial</span>
+                    <div class="overlay">
+                        <h3>Urban Landscapes</h3>
+                    </div>
+                </div>
+                <div class="work-item photo">
+                    <span>📸 Sunset Flight</span>
+                    <div class="overlay">
+                        <h3>Golden Hour</h3>
+                    </div>
+                </div>
+                <div class="work-item video">
+                    <span>Event Coverage</span>
+                    <div class="overlay">
+                        <h3>Wedding Aerial</h3>
+                        <p>Cinematic highlights</p>
+                    </div>
+                </div>
+                <div class="work-item photo">
+                    <span>📸 Nature From Above</span>
+                    <div class="overlay">
+                        <h3>Wilderness</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Monse's Portfolio Page -->
+    <div id="monse-page" class="portfolio-page">
+        <div class="portfolio-header monse">
+            <h2>Monse's Portfolio</h2>
+            <p>Photography Work</p>
+        </div>
+        <div class="portfolio-content">
+            <div class="work-grid">
+                <div class="work-item photo">
+                    <span>📸 Portrait Session</span>
+                    <div class="overlay">
+                        <h3>Golden Hour Portraits</h3>
+                    </div>
+                </div>
+                <div class="work-item photo">
+                    <span>📸 Lifestyle</span>
+                    <div class="overlay">
+                        <h3>Candid Moments</h3>
+                    </div>
+                </div>
+                <div class="work-item square">
+                    <span>📸 Editorial</span>
+                    <div class="overlay">
+                        <h3>Fashion Editorial</h3>
+                    </div>
+                </div>
+                <div class="work-item video">
+                    <span>Behind The Scenes</span>
+                    <div class="overlay">
+                        <h3>Studio Session</h3>
+                        <p>Creative process</p>
+                    </div>
+                </div>
+                <div class="work-item photo">
+                    <span>📸 Nature</span>
+                    <div class="overlay">
+                        <h3>Landscape Photography</h3>
+                    </div>
+                </div>
+                <div class="work-item photo">
+                    <span>📸 Product</span>
+                    <div class="overlay">
+                        <h3>Product Shots</h3>
+                    </div>
+                </div>
+                <div class="work-item square">
+                    <span>📸 Event</span>
+                    <div class="overlay">
+                        <h3>Event Coverage</h3>
+                    </div>
+                </div>
+                <div class="work-item photo">
+                    <span>📸 Creative</span>
+                    <div class="overlay">
+                        <h3>Conceptual Work</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showPage(page) {
+            // Hide all pages
+            document.getElementById('home-page').style.display = 'none';
+            document.getElementById('nico-page').classList.remove('active');
+            document.getElementById('monse-page').classList.remove('active');
+
+            // Show selected page
+            if (page === 'home') {
+                document.getElementById('home-page').style.display = 'block';
+            } else if (page === 'nico') {
+                document.getElementById('nico-page').classList.add('active');
+            } else if (page === 'monse') {
+                document.getElementById('monse-page').classList.add('active');
+            }
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#contact') {
+                    e.preventDefault();
+                    showPage('home');
+                    setTimeout(() => {
+                        document.querySelector(this.getAttribute('href')).scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }, 100);
+                }
+            });
+        });
+    </script>
+</body>
+</html>
